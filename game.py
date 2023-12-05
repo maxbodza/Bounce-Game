@@ -23,13 +23,13 @@ def start_game(event):
         file1.close()
         score.configure(text="Score: 00\n\nHighscore: " + highscore)
         canvas.delete("all")
-        BALL_COLOR = ["red", "yellow", "green"]
+        BALL_COLOR = ["pink", "white"]
         BRICK_COLOR = ["PeachPuff3", "dark slate gray", "rosy brown", "light goldenrod yellow", "turquoise3", "salmon",
                        "light steel blue", "dark khaki", "pale violet red", "orchid", "tan", "MistyRose2",
                        "DodgerBlue4", "wheat2", "RosyBrown2", "bisque3", "DarkSeaGreen1"]
         random.shuffle(BALL_COLOR)
         # Colour of the paddle
-        paddle = Paddle(canvas, "blue")
+        paddle = Paddle(canvas, "white")
         bricks = []
         for i in range(0, 5):
             b = []
@@ -63,7 +63,7 @@ def start_game(event):
                     time.sleep(0.01)
                     if ball.hit==95:
                         # You won message and colour
-                        canvas.create_text(250, 250, text="YOU WON !!", fill="yellow", font="Consolas 24 ")
+                        canvas.create_text(250, 250, text="YOU WON", fill="white", font="Consolas 24 ")
                         root.update_idletasks()
                         root.update()
                         playing = False
@@ -77,7 +77,7 @@ def start_game(event):
                         file1 = open("highscore.txt","w")
                         file1.write(str(ball.hit))
                         file1.close()
-                    canvas.create_text(250, 250, text="GAME OVER!!\nYour score was: " + str(ball.hit), fill="red", font="Consolas 24 ")
+                    canvas.create_text(250, 250, text="GAME OVER\nYour score was: " + str(ball.hit), fill="white", font="Consolas 24 ")
                     root.update_idletasks()
                     root.update()
                     playing = False
@@ -87,12 +87,12 @@ def start_game(event):
                     if m==None:pass
                 except:
                     # Pause message and colour
-                    m=canvas.create_text(250, 250, text="Paused", fill="blue", font="Consolas 24 ")
+                    m=canvas.create_text(250, 250, text="Paused", fill="white", font="Consolas 24 ")
                 root.update_idletasks()
                 root.update()
 
 # Initial text in screen (x,y), and Start Button
 root.bind_all("<Return>", start_game)
-canvas.create_text(250, 250, text="Press Enter to start Game!!", fill="red", font="Consolas 18")
+canvas.create_text(250, 250, text="Press Enter to Start Game", fill="white", font="Consolas 18")
 root.mainloop()
         
